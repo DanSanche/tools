@@ -201,3 +201,22 @@ extrafieldtwo: bbbbb
 		t.Errorf("\ngot:\n%+v\nwant:\n%+v", c.Meta, wantMeta)
 	}
 }
+
+func TestParseCode(t *testing.T) {
+	wantCode := types.NewCodeNode("class Foo {}", false)
+	wantCode.Lang = "language-java"
+
+	content := `## Step
+` + "```java" + `
+class Foo {}
+` + "```"
+
+	c := mustParseCodelab(content)
+	res, _ := c.Steps[0].Content.Nodes[0].(*types.CodeNode)
+	if res.Lang != wantCode.Lang {
+		t.Errorf("\ngot lang: \n%+v\nwant:\n%+v", res.Lang, wantCode.Lang)
+	}
+	if strings.TrimSpace(res.Value) != strings.TrimSpace(wantCode.Value) {
+		t.Errorf("\ngot value: \n%+v\nwant:\n%+v", res.Value, wantCode.Value)
+	}
+}
