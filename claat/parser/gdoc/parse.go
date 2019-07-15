@@ -28,9 +28,9 @@ import (
 	"golang.org/x/net/html"
 	"golang.org/x/net/html/atom"
 
-	"github.com/googlecodelabs/tools/claat/parser"
-	"github.com/googlecodelabs/tools/claat/types"
-	"github.com/googlecodelabs/tools/claat/util"
+	"github.com/dansanche/tools/claat/parser"
+	"github.com/dansanche/tools/claat/types"
+	"github.com/dansanche/tools/claat/util"
 )
 
 func init() {

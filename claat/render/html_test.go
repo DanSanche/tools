@@ -17,7 +17,7 @@ package render
 import (
 	"testing"
 
-	"github.com/googlecodelabs/tools/claat/types"
+	"github.com/dansanche/tools/claat/types"
 )
 
 func TestHTMLEnv(t *testing.T) {

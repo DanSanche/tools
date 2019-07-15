@@ -24,9 +24,9 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/googlecodelabs/tools/claat/render"
-	"github.com/googlecodelabs/tools/claat/types"
-	"github.com/googlecodelabs/tools/claat/util"
+	"github.com/dansanche/tools/claat/render"
+	"github.com/dansanche/tools/claat/types"
+	"github.com/dansanche/tools/claat/util"
 )
 
 // Options type to make the CmdExport signature succinct.

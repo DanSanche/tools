@@ -25,8 +25,8 @@ import (
 	"testing"
 	"testing/quick"
 
-	"github.com/googlecodelabs/tools/claat/render"
-	"github.com/googlecodelabs/tools/claat/types"
+	"github.com/dansanche/tools/claat/render"
+	"github.com/dansanche/tools/claat/types"
 )
 
 type testTransport struct {
