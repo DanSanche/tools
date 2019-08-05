@@ -191,7 +191,7 @@ func (mw *mdWriter) code(n *types.CodeNode) {
 	defer mw.writeBytes(newLine)
 
 	mw.writeString("```")
-	if n.Term {
+	if n.Lang == "" && n.Term {
 		mw.writeString("console")
 	} else {
 		mw.writeString(n.Lang)
