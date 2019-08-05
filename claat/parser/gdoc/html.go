@@ -77,6 +77,17 @@ func isCode(css cssStyle, hn *html.Node) bool {
 	return hasClassStyle(css, hn, "font-family", fontCode)
 }
 
+func isLanguageAnnotation(css cssStyle, hn *html.Node) bool {
+	if !(isCode(css, hn) || isConsole(css, hn)) {
+		return false
+	}
+	if hn.Type == html.ElementNode {
+		hn = hn.Parent
+	}
+	style := nodeAttr(hn, "style")
+	return strings.Contains(style, "text-align:right")
+}
+
 func isButton(css cssStyle, hn *html.Node) bool {
 	return hasClassStyle(css, hn, "background-color", buttonColor)
 }
