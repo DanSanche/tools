@@ -77,10 +77,7 @@ func isCode(css cssStyle, hn *html.Node) bool {
 	return hasClassStyle(css, hn, "font-family", fontCode)
 }
 
-func isLanguageAnnotation(css cssStyle, hn *html.Node) bool {
-	if !(isCode(css, hn) || isConsole(css, hn)) {
-		return false
-	}
+func isLanguageAnnotation(hn *html.Node) bool {
 	if hn.Type == html.ElementNode {
 		hn = hn.Parent
 	}
@@ -184,6 +181,16 @@ func findChildAtoms(root *html.Node, a atom.Atom) []*html.Node {
 		nodes = append(nodes, findChildAtoms(hn, a)...)
 	}
 	return nodes
+}
+
+func findLangaugeAnnotation(hn *html.Node) string {
+	//language annotation should always be the first line
+	c := hn.Parent.Parent.FirstChild.FirstChild
+	if isLanguageAnnotation(c) {
+		return stringifyNode(c, true, true)
+	} else {
+		return ""
+	}
 }
 
 // findParent is like findAtom but search is in the opposite direction.

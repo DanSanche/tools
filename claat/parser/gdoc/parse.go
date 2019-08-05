@@ -612,8 +612,11 @@ func code(ds *docState, term bool) types.Node {
 	if td == nil {
 		return text(ds)
 	}
+	if isLanguageAnnotation(ds.cur) {
+		return nil
+	}
 	// block code or terminal
-	l := ""
+	l := findLangaugeAnnotation(ds.cur)
 	v := stringifyNode(ds.cur, false, true)
 	if v == "" {
 		if countDirect(ds.cur.Parent) > 1 {
