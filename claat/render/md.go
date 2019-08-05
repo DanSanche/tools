@@ -187,6 +187,9 @@ func (mw *mdWriter) url(n *types.URLNode) {
 }
 
 func (mw *mdWriter) code(n *types.CodeNode) {
+	if strings.Contains(n.Lang, "hidden") {
+		return
+	}
 	mw.newBlock()
 	defer mw.writeBytes(newLine)
 
