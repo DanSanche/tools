@@ -613,6 +613,7 @@ func code(ds *docState, term bool) types.Node {
 		return text(ds)
 	}
 	// block code or terminal
+	l := ""
 	v := stringifyNode(ds.cur, false, true)
 	if v == "" {
 		if countDirect(ds.cur.Parent) > 1 {
@@ -622,7 +623,7 @@ func code(ds *docState, term bool) types.Node {
 	} else if ds.cur.Parent.FirstChild == ds.cur && ds.cur.Parent.DataAtom != atom.Span {
 		v = "\n" + v
 	}
-	n := types.NewCodeNode(v, term)
+	n := types.NewCodeNode(v, l, term)
 	n.MutateBlock(td)
 	return n
 }

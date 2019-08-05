@@ -604,7 +604,7 @@ func code(ds *docState, term bool) types.Node {
 	} else if ds.cur.Parent.FirstChild == ds.cur && ds.cur.Parent.DataAtom != atom.Span {
 		v = "\n" + v
 	}
-	n := types.NewCodeNode(v, term)
+	n := types.NewCodeNode(v, "", term)
 	for _, attr := range ds.cur.Attr {
 		if attr.Key == "class" {
 			for _, class := range strings.Split(attr.Val, " ") {
